@@ -4,15 +4,16 @@ use GCS
 go
 
 --I.	For each employee, list the full name and the name of each skill that he currently has
-select FirstName, LastName, Description AS Skills
-from Employee
-inner join EmployeeSkills 
-on Employee.EmpID = EmployeeSkills.EmpID
+
+select firstname, lastname, description
+from Employee 
+inner join EmployeeSkills
+on Employee.EmpID= EmployeeSkills.EmpID
 inner join Skill
 on EmployeeSkills.SkillID= Skill.SkillID
 
---II.	List the name of each employee for which we have no skills currently listed
 
+--II.	List the name of each employee for which we have no skills currently listed
 --using left join-much more efficient!
 select FirstName, lastname
 from employee 
@@ -106,6 +107,7 @@ group by SkillID) AS MaxSkill))
 
 --VII.	List the region name in which most employees live.
 --inner join
+
 select description
 from region
 inner join Employee
@@ -150,7 +152,6 @@ where REGIONID not in
 from Employee)
 
 --IX.	List the name of the skills if at least two employees have that skill
-
 --inner join
 select description
 from skill
